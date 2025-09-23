@@ -58,19 +58,4 @@ public class AIAssistantServiceImpl implements AIAssistantService {
 
         return chatResponse.getResult().getOutput().getText();
     }
-
-    @Override
-    public String chatBookFlight(String query, String conversationId, Long flightId, BookFlightRequestDTO bookingRequest) {
-        return "";
-    }
-
-    @Override
-    public String chatGetBookingsByEmail(String query, String conversationId, String email) {
-        return "";
-    }
-
-    @Override
-    public String chatCancelFlightBooking(String query, String conversationId, Long flightId, String email) {
-        return "";
-    }
 }

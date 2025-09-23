@@ -35,48 +35,4 @@ public class AIAssistantController {
         System.out.println("conversationId = " + conversationId);
         return service.chatQuery(question, conversationId);
     }
-
-    /// AI assistant books for user.
-    @PostMapping("/{flightId}/bookFlight")
-    public String askBookFlight(
-            @RequestParam
-            @NotNull
-            @NotBlank
-            String question,
-            @NotNull
-            @NotBlank
-            String conversationId,
-            @Parameter(description = "ID of the flight to book") @PathVariable Long flightId,
-            @Parameter(description = "Booking request details") @RequestBody BookFlightRequestDTO bookingRequest){
-        return "Hello from AI Assistant: askBookFlight";
-    }
-
-    ///  AI Assistant get user bookings
-    @GetMapping("/BookingsByEmail")
-    public String askGetBookingsByEmail(
-            @RequestParam
-            @NotNull
-            @NotBlank
-            String question,
-            @NotNull
-            @NotBlank
-            String conversationId,
-            @Parameter(description = "Email to search bookings for") @RequestParam String email){
-        return "Hello from AI Assistant: askGetBookingsByEmail";
-    }
-
-    ///  AI assistant cancels user's booking
-    @DeleteMapping("/{flightId}/cancelBooking")
-    public String askCancelFlightBooking(
-            @RequestParam
-            @NotNull
-            @NotBlank
-            String question,
-            @NotNull
-            @NotBlank
-            String conversationId,
-            @Parameter(description = "ID of the flight to cancel") @PathVariable Long flightId,
-            @Parameter(description = "Email associated with the booking") @RequestParam String email){
-        return "Hello from AI Assistant: askCancelFlightBooking";
-    }
 }
