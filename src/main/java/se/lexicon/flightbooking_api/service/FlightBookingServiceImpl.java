@@ -24,9 +24,6 @@ public class FlightBookingServiceImpl implements FlightBookingService {
     private final FlightBookingRepository flightBookingRepository;
     private final FlightBookingMapper mapper;
 
-    @Tool(description = "Finds a flight by ID and updates its status to BOOKED " +
-            "and updates the flights passengerName and passengerEmail with " +
-            "bookingRequest passengerName and passengerEmail.")
     @Override
     public FlightBookingDTO bookFlight(Long flightId, BookFlightRequestDTO bookingRequest) {
         FlightBooking flight = flightBookingRepository.findById(flightId)
@@ -44,7 +41,6 @@ public class FlightBookingServiceImpl implements FlightBookingService {
         return mapper.toDTO(savedFlight);
     }
 
-    @Tool(description = "Finds a flight by ID, check so the email is matches to that flight's passagerEmail and updates its status to AVAILABLE.")
     @Override
     public void cancelFlight(Long flightId, String passengerEmail) {
         FlightBooking flight = flightBookingRepository.findById(flightId)
@@ -60,7 +56,6 @@ public class FlightBookingServiceImpl implements FlightBookingService {
         flightBookingRepository.save(flight);
     }
 
-    @Tool(description = "Finds all flights with status AVAILABLE.")
     @Override
     public List<AvailableFlightDTO> findAvailableFlights() {
         return flightBookingRepository.findByStatus(FlightStatus.AVAILABLE)
@@ -69,7 +64,6 @@ public class FlightBookingServiceImpl implements FlightBookingService {
                 .collect(Collectors.toList());
     }
 
-    @Tool(description = "Finds all bookings for a given email.")
     @Override
     public List<FlightBookingDTO> findBookingsByEmail(String email) {
         return flightBookingRepository.findByPassengerEmail(email)
@@ -78,7 +72,6 @@ public class FlightBookingServiceImpl implements FlightBookingService {
                 .collect(Collectors.toList());
     }
 
-    @Tool(description = "Finds all flights.")
     @Override
     public List<FlightListDTO> findAll() {
         return flightBookingRepository.findAll()

@@ -13,16 +13,16 @@ public class AIAssistantServiceImpl implements AIAssistantService {
 
     private ChatClient chatClient;
     private ChatMemory chatMemory;
-    private FlightBookingService flightBookingService;
+    private AppToolCalling appToolCalling;
 
-    public AIAssistantServiceImpl(ChatClient.Builder chatClient, ChatMemory chatMemory, FlightBookingService flightBookingService) {
+    public AIAssistantServiceImpl(ChatClient.Builder chatClient, ChatMemory chatMemory, AppToolCalling appToolCalling) {
         this.chatClient = chatClient
                 .defaultAdvisors(
                         MessageChatMemoryAdvisor.builder(chatMemory).build()
                         // config the vector database
                 ).build();
         this.chatMemory = chatMemory;
-        this.flightBookingService = flightBookingService;
+        this.appToolCalling = appToolCalling;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class AIAssistantServiceImpl implements AIAssistantService {
                         - If you need more information from the user, politely explain that you need the missing information
                         """)
                 .user(query)
-                .tools(flightBookingService)
+                .tools(appToolCalling)
                 .options(OpenAiChatOptions.builder().temperature(0.2).maxTokens(500).build())
                 .advisors(advisorSpec -> advisorSpec.param(ChatMemory.CONVERSATION_ID, conversationId))
                 .call()
