@@ -32,10 +32,10 @@ public class AppToolCalling {
         flightBookingService.cancelFlight(flightId, passengerEmail);
     }
 
-    @Tool(description = "Finds all flights with status AVAILABLE.")
-    public List<AvailableFlightDTO> findAvailableFlights() {
-        return flightBookingService.findAvailableFlights();
-    }
+//    @Tool(description = "Finds all flights with status AVAILABLE.")
+//    public List<AvailableFlightDTO> findAvailableFlights() {
+//        return flightBookingService.findAvailableFlights();
+//    }
 
     @Tool(description = "Finds all bookings for a given email.")
     public List<FlightBookingDTO> findBookingsByEmail(String email) {

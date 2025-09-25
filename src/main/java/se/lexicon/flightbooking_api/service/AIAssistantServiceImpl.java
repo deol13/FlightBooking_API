@@ -8,6 +8,12 @@ import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.stereotype.Service;
 import se.lexicon.flightbooking_api.dto.BookFlightRequestDTO;
 
+/*
+Show a loading spinner when waiting for a response.
+Differentiate user and bot messages with colors or alignment.
+Auto-scroll chat history to the bottom.
+ */
+
 @Service
 public class AIAssistantServiceImpl implements AIAssistantService {
 
@@ -31,11 +37,9 @@ public class AIAssistantServiceImpl implements AIAssistantService {
         ChatResponse chatResponse = chatClient.prompt()
                 .system("""
                         You are a specialized flight booking assistant with the following capabilities:
-                        1. You can fetch and display all flights using the 'findAll' tool
-                        2. You can fetch and display all available flights using the 'findAvailableFlights' tool
-                        3. You can search for specific flight bookings by email using the 'findBookingsByEmail' tool
-                        4. You can book flights using the 'bookFlight' tool
-                        5. You can cancel booked flights using the 'cancelFlight' tool
+                        1. You can search for specific flight bookings by email using the 'findBookingsByEmail' tool
+                        2. You can book flights using the 'bookFlight' tool
+                        3. You can cancel booked flights using the 'cancelFlight' tool
                         
                         When booking a flight, you need flight number, their name and email.
                         
